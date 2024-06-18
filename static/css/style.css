@@ -1,0 +1,785 @@
+:root[bg-theme='light'] {
+  --bg-color: white;
+}
+  
+:root[bg-theme='gray'] {
+  --bg-color: #42424670;
+}
+
+:root[bg-theme='light-red'] {
+  --bg-color: #eda8a8;
+}
+
+:root[bg-theme='light-blue'] {
+  --bg-color: #55609a;
+}
+
+:root[bg-theme='light-purple'] {
+  --bg-color: #c09ff9;
+}
+
+:root[bg-theme='light-green'] {
+  --bg-color: #91ecd1;
+}
+
+:root[bg-theme='light-yellow'] {
+  --bg-color: #e9e097;
+}
+
+/*body::before {*/
+/*  content: "NPL小组汇报"; !* 设置伪元素的内容为 "ChatGPT" *!*/
+/*  position: fixed; !* 使用 fixed 定位，使其固定在浏览器窗口的位置 *!*/
+/*  top: 0; !* 位于窗口顶部 *!*/
+/*  left: 8px; !* 位于窗口左侧 *!*/
+/*  width: 100%; !* 占据整个窗口的宽度 *!*/
+/*  padding: 10px 20px; !* 设置内边距 *!*/
+/*  background-color: #f7f7f7; !* 设置背景颜色 *!*/
+/*  color: #0d1715; !* 设置文字颜色 *!*/
+/*  font-size: 20px; !* 设置文字大小 *!*/
+/*  font-weight: bold; !* 设置文字加粗 *!*/
+/*  border-bottom-right-radius: 10px; !* 设置右下角边框圆角 *!*/
+/*  border: 2px solid rgb(239, 228, 228); !* 设置边框样式 *!*/
+/*  z-index: 9999; !* 设置 z-index 属性，确保在其他内容之上 *!*/
+/*}*/
+
+body {
+  border: 10px solid #f7f7f7; /* 设置边框样式 */
+  border-radius: 20px;
+  padding: 20px; /* 设置内边距 */
+}
+body {
+    transition: background-color 0.5s ease-in-out; /* 添加过渡效果 */
+}
+body {
+  background-color: var(--bg-color);
+}
+
+@media screen and (max-width: 768px){
+  .container {
+    width: 100% !important;
+  }
+  .answer{
+    height: calc(100vh - 10px) !important;
+  }
+  .answer .others .common .settings-common span{
+    font-size: 85%;
+  }
+  .foot p:first-child{
+    font-size: 14px !important;
+  }
+  .foot p a{
+    font-size: 13px !important;
+  }
+}
+
+@media screen and (min-width: 1200px) {
+  .container {
+      width: 1000px !important;
+  }
+}
+
+
+@media screen and (min-width: 768px) {
+  #chatWindow::-webkit-scrollbar {
+    width: 3px;
+  }
+
+  #chatWindow::-webkit-scrollbar-track {
+    background-color: #f1f1f1;
+  }
+
+  #chatWindow::-webkit-scrollbar-thumb {
+    background-color: #888;
+    border-radius: 4px;
+  }
+}
+
+*{
+  margin: 0;
+  padding: 0;
+}
+
+
+
+html,body{
+  height: 100%;
+  width: 100%;
+}
+
+.form-control{
+  border-color: #1ab394 !important;
+  padding: 6px 6px !important;
+}
+
+pre{
+  position: relative;
+  color: #adbac7;
+  background: #2b2a2a;
+}
+
+.copy-btn{
+  position: absolute;
+  top: 5px;
+  right: 5px;
+  padding: 5px 10px;
+  border: none;
+  border-radius: 4px;
+  background-color: #686666;
+  color: #e2dfea;
+  cursor: pointer;
+}
+
+
+.title{
+  text-align: right;
+  width: 100%;
+  z-index: 9999;
+}
+
+.title h2{
+  text-align: left;
+  font-size: 25px;
+  margin-bottom: 20px;
+  color: rgba(51, 52, 51, 0.98);
+  z-index: 9999;
+}
+
+.answer{
+  width: 100%;
+  position: relative;
+  height: calc(100vh - 165px);
+  /*box-shadow: 0 0 20px rgba(0, 0, 0, 0.1); !* x-offset y-offset blur spread color *!*/
+  /*box-shadow: 0 0 40px rgba(0, 0, 0, 0.5); !* x-offset y-offset blur color *!*/
+  /*outline: 15px solid rgb(255, 255, 255); !* width style color *!  /*box-shadow: 0 0 40px rgba(0, 0, 0, 0.5); !* x-offset y-offset blur color *!*/
+  /*outline: 15px solid rgb(255, 255, 255); !* width style color *!*/
+}
+
+.answer .tips{
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.answer .tips h4{
+  color:red;
+}
+
+.answer .tips img{
+  margin-top: 30px;
+  border:1px solid #7eecd6;
+  box-shadow: 0px 1px 10px 0px #7defd8;
+  border-radius: 10px;
+  width: 200px;
+}
+
+.answer .function{
+  padding: 0 15px;
+  width: 100%;
+  position: absolute;
+  bottom: 0px;
+}
+.answer .others{
+  display: flex;
+  justify-content:space-between;
+  align-items: center;
+  padding: 0 15px;
+  height: 30px;
+  margin-bottom: 10px;
+}
+
+.answer .others .left,.right{
+  display: flex;
+}
+
+.answer .others .common{
+  width: 30px;
+  height: 30px;
+  display: flex;
+}
+
+.answer .others .common .settings-common{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px 15px;
+  background-color: #fff;
+  border-bottom: 1px solid #ddd;
+}
+
+.answer .others .common .settings-common:hover{
+  background-color: rgba(148,163,184,.2);
+}
+
+.answer .others .common .settings-common:last-child{
+  border-bottom: 0;
+}
+
+.answer .others .common .settings-common .ipt-common{
+  width: 60%;
+  opacity: .8;
+}
+
+.answer .others .common .settings-common span{
+  color: #1ab394;
+  cursor: default;
+}
+.answer .others .common .settings-common a{
+  font-size: 14px;
+  color: #1ab394;
+  cursor: pointer;
+  text-decoration: none;
+}
+
+/* 按钮样式 */
+.chck-btn{
+  display: flex;
+  justify-content: center;
+  width: 60px;
+  height: 34px;
+}
+
+/* Hide the input */
+input[type="checkbox"] {
+  position: absolute;
+  opacity: 0;
+  z-index: -1;
+}
+
+.check-trail {
+  display: flex;
+  align-items: center;
+  width: 100%;
+  height: 100%;
+  background: rgba(148,163,184,.4);
+  border-radius: 15px;
+  transition: all 0.5s ease;
+  cursor: pointer;
+}
+
+.check-handler {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 34px;
+  height: 34px;
+  background: rgb(148 163 184 / 85%);
+  border-radius: 50%;
+  transition: all 0.5s ease;
+  box-shadow: 0 0 8px rgba(0, 0, 0, 0.3);
+}
+
+.check-handler:before {
+  content: "×";
+  color: white;
+  font-weight: bold;
+}
+
+input[type="checkbox"]:checked + .check-trail {
+  background: #1ab394a3;
+}
+input[type="checkbox"]:checked + .check-trail .check-handler {
+  margin-left: 26px;
+  background: #1ab394;
+}
+input[type="checkbox"]:checked + .check-trail .check-handler::before {
+  content: "✔";
+}
+
+.answer .others .right .screenshot{
+  margin-right: 10px;
+}
+
+.answer .others .icon-style{
+  width:30px;
+  height: 30px;
+  line-height: 30px;
+  text-align: center;
+  color: rgba(51, 52, 51, 0.98);
+  cursor: pointer;
+}
+
+.answer .others .icon-style:hover{
+  background-color: rgba(26, 179, 148,.1);
+}
+
+.answer .ipt{
+  display:flex;
+  align-items: center;
+  padding-right: 15px;
+  border-radius: 10px;
+  height: 50px;
+  border: 1px solid rgba(121, 138, 136, 0.29);
+  box-shadow: 0px 0px 10px 0px rgba(26, 179, 148, 0.2);
+}
+.answer .ipt textarea {
+  resize: none;
+  overflow-y: auto;
+  border: none;
+  box-shadow:none;
+}
+.answer .ipt textarea:focus{
+  border: none !important;
+  box-shadow: none !important;
+}
+
+.answer #chatWindow {
+  width: 100%;
+  max-height: calc(100% - 100px);
+  height:auto;
+  overflow-y: auto;
+}
+
+.message-bubble {
+  padding: 5px;
+  margin: 10px;
+  display: flex;
+  align-items: flex-start;
+  border-bottom: 1px dashed #e7eaec;
+}
+
+.message-bubble .message-text{
+  width: auto;
+  max-width: calc(100% - 45px);
+  font-size: 18px;
+  margin-left:15px;
+  word-break: break-all;
+}
+
+.message-bubble .message-text p{
+  white-space: pre-wrap;
+}
+
+.message-bubble .response ol,ul{
+  padding-left: 2em;
+}
+
+/* 错误信息样式 */
+.message-bubble .message-text p.error{
+  color:red;
+  height:auto;
+  display: block;
+  white-space: normal;
+  word-break: break-all;
+}
+
+.message-bubble .chat-icon {
+  width: 30px;
+  height: 30px;
+  border-radius: 3px;
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+}
+
+.message-bubble .request-icon{
+  background-image: url(../images/avatar.png);
+}
+
+.message-bubble .response-icon{
+ background-image: url(../images/chatgpt.png);
+}
+
+.message-bubble .response .loading-icon{
+  color: rgba(51, 52, 51, 0.98);
+}
+
+.answer #chatBtn{
+  background-color: rgba(51, 52, 51, 0.8);
+  border-color: rgb(154, 241, 177);
+}
+
+.answer #chatBtn:focus{
+  outline:5px auto rgb(255, 255, 255) !important;
+}
+
+.foot p:first-child{
+  margin-bottom: 10px;
+  opacity: .9;
+}
+
+.foot p:nth-child(2){
+  margin-bottom: 0;
+}
+
+.foot p a{
+  margin-right: 10px;
+  font-weight: 400;
+  font-size: 14px;
+  color: rgba(51, 52, 51, 0.8);
+  text-decoration:none;
+}
+
+.left-element {
+    position: fixed; /* 使用 fixed 定位 */
+    left: 10px; /* 左侧距离为 0 */
+    top: 50%; /* 垂直居中 */
+    transform: translateY(-50%); /* 使用 translateY 进行垂直居中 */
+    width: 200px; /* 设置宽度 */
+    height: 710px; /* 设置高度 */
+    border-radius: 20px;
+    background: linear-gradient(to bottom, rgb(232, 226, 226), rgb(236, 230, 230)); /* 设置渐变背景色，半透明 */
+    z-index: 999; /* 设置 z-index 属性，确保元素在其他内容之上 */
+    display: none; /* 初始状态隐藏 */
+}
+
+.toggleButton{
+    position: fixed; /* 使用 fixed 定位 */
+    left: 10px; /* 左侧距离为 0 */
+    top: 50%; /* 垂直居中 */
+    transform: translateY(-50%); /* 使用 translateY 进行垂直居中 */
+    width: 30px; /* 设置宽度 */
+    height: 60px; /* 设置高度 */
+    background-color: #bce8f1; /* 设置背景颜色，用于测试 */
+    opacity: 0.7; /* 设置透明度为 70% */
+    z-index: 9999; /* 设置 z-index 属性，确保元素在其他内容之上 */
+      /* 设置背景图片 */
+    background-image: url('../images/shou.png'); /* 请将 'path/to/image.png' 替换为你的图片路径 */
+    background-size: cover; /* 使背景图片填充按钮 */
+    background-repeat: no-repeat; /* 防止背景图片重复 */
+    /* 隐藏按钮的默认边框和背景颜色 */
+    border: none;
+    background-color: transparent;
+    /* 如果需要添加其他样式，可以在这里添加 */
+}
+
+.custom-box {
+    /* 设置宽度 */
+    width: 100%; /* 也可以使用像素值或其他单位 */
+    /* 设置最小高度 */
+    min-height: 500px; /* 如果内容超出此高度，容器将自动增加高度 */
+    /* 设置内边距 */
+    padding: 20px; /* 内边距会影响元素内容与边框之间的距离 */
+    /* 设置外边距 */
+    margin: 20px auto 0; /* 上方外边距为 50px，水平方向自动居中 */
+    /* 如果需要其他样式，可以在这里添加 */
+
+}
+
+.file-upload{
+  width: 20px;
+}
+
+/* 隐藏文件输入框 */
+#file-uploader {
+  display: none;
+}
+
+/*body {*/
+/*    font-size: 11px;*/
+/*    font-family:  "宋体", SimSun, sans-serif;;*/
+/*    text-align: center;*/
+/*    background-color: #f8faff;*/
+/*    padding: 100px;*/
+
+/*  }*/
+h2{
+  padding-bottom:0em
+}
+  .button {
+  display: inline-block;
+  padding: 1em 2em;
+  background-color: #4b4b4b;
+  /* background-color: transparent; */
+  color: #fff;
+  border-radius: 4px;
+  border: none;
+    width: 150px;
+  height: 32px;
+  cursor: pointer;
+  position: relative;
+  box-shadow: 0 2px 25px rgba(13, 23, 21, 0.68);
+  outline: 0;
+  transition: transform ease-in 0.1s, background-color ease-in 0.1s,  box-shadow ease-in 0.25s;
+}
+.button {
+  color: #fdfdfd; /* 设置新的文字颜色 */
+  font-size: 11px; /* 设置新的文字大小 */
+  font-weight: bold; /* 设置新的文字粗细 */
+  text-align: center;
+  font-family: "宋体", SimSun, sans-serif;
+  /* 添加其他文字属性，如字体系列、文本装饰等 */
+}
+.button::before{
+  position: absolute;
+  content: '';
+  left: -2em;
+  right: -2em;
+  top: -2em;
+  bottom: -2em;
+  pointer-events: none;
+  transition: ease-in-out .5s;
+  background-repeat: no-repeat;
+  background-image: radial-gradient(circle, #0d1715 20%, transparent 20%),
+  radial-gradient(circle, #0d1715 20%, transparent 20%),
+  radial-gradient(circle, #4b4b4b 20%, transparent 20%),
+  radial-gradient(circle, rgb(13, 23, 21) 20%, transparent 20%),
+  radial-gradient(circle, #4b4b4b 20%, transparent 20%),
+  radial-gradient(circle, #ff0081 20%, transparent 20%),
+  radial-gradient(circle, #ff0081 20%, transparent 20%),
+  radial-gradient(circle, #0d1715 20%, transparent 20%),
+  radial-gradient(circle, #ff0081 20%, transparent 20%),
+  /*  */
+  radial-gradient(circle, #ff0081 20%, transparent 20%),
+  radial-gradient(circle, #0d1715 20%, transparent 20%),
+  radial-gradient(circle, #ff0081 20%, transparent 20%),
+  radial-gradient(circle, #4b4b4b 20%, transparent 20%),
+  radial-gradient(circle, #ff0081 20%, transparent 20%),
+  radial-gradient(circle, #0d1715 20%, transparent 20%),
+  radial-gradient(circle, #ff0081 20%, transparent 20%);
+  background-size: 10% 10%, 20% 20%, 15% 15%, 20% 20%, 18% 18%, 10% 10%, 15% 15%, 10% 10%, 18% 18%,
+  15% 15%, 20% 20%, 18% 18%, 20% 20%, 15% 15%, 10% 10%, 20% 20%;
+  background-position: 18% 40%, 20% 31%, 30% 30%, 40% 30%, 50% 30%, 57% 30%, 65% 30%, 80% 32%, 15% 60%,
+  83% 60%, 18% 70%, 25% 70%, 41% 70%, 50% 70%, 64% 70%, 80% 71%;
+  animation: bubbles ease-in-out .75s forwards;
+}
+
+.button:active {
+  transform: scale(0.95);
+  background-color: #0d1715;
+  box-shadow: 0 2px 25px rgba(233, 30, 99, 0.5);
+}
+.button:active::before {
+  animation: none;
+  background-size: 0;
+}
+  .button {
+  display: inline-block;
+  padding: 1em 2em;
+  background-color: #4b4b4b;
+  /* background-color: transparent; */
+  color: #fff;
+  border-radius: 4px;
+  border: none;
+    width: 150px;
+  height: 32px;
+  cursor: pointer;
+  position: relative;
+  box-shadow: 0 2px 25px rgba(13, 23, 21, 0.68);
+  outline: 0;
+  transition: transform ease-in 0.1s, background-color ease-in 0.1s,  box-shadow ease-in 0.25s;
+}
+.button {
+  color: #fdfdfd; /* 设置新的文字颜色 */
+  font-size: 11px; /* 设置新的文字大小 */
+  font-weight: bold; /* 设置新的文字粗细 */
+  text-align: center;
+  font-family: "宋体", SimSun, sans-serif;
+  /* 添加其他文字属性，如字体系列、文本装饰等 */
+}
+.button::before{
+  position: absolute;
+  content: '';
+  left: -2em;
+  right: -2em;
+  top: -2em;
+  bottom: -2em;
+  pointer-events: none;
+  transition: ease-in-out .5s;
+  background-repeat: no-repeat;
+  background-image: radial-gradient(circle, #0d1715 20%, transparent 20%),
+  radial-gradient(circle, #0d1715 20%, transparent 20%),
+  radial-gradient(circle, #4b4b4b 20%, transparent 20%),
+  radial-gradient(circle, rgb(13, 23, 21) 20%, transparent 20%),
+  radial-gradient(circle, #4b4b4b 20%, transparent 20%),
+  radial-gradient(circle, #ff0081 20%, transparent 20%),
+  radial-gradient(circle, #ff0081 20%, transparent 20%),
+  radial-gradient(circle, #0d1715 20%, transparent 20%),
+  radial-gradient(circle, #ff0081 20%, transparent 20%),
+  /*  */
+  radial-gradient(circle, #ff0081 20%, transparent 20%),
+  radial-gradient(circle, #0d1715 20%, transparent 20%),
+  radial-gradient(circle, #ff0081 20%, transparent 20%),
+  radial-gradient(circle, #4b4b4b 20%, transparent 20%),
+  radial-gradient(circle, #ff0081 20%, transparent 20%),
+  radial-gradient(circle, #0d1715 20%, transparent 20%),
+  radial-gradient(circle, #ff0081 20%, transparent 20%);
+  background-size: 10% 10%, 20% 20%, 15% 15%, 20% 20%, 18% 18%, 10% 10%, 15% 15%, 10% 10%, 18% 18%,
+  15% 15%, 20% 20%, 18% 18%, 20% 20%, 15% 15%, 10% 10%, 20% 20%;
+  background-position: 18% 40%, 20% 31%, 30% 30%, 40% 30%, 50% 30%, 57% 30%, 65% 30%, 80% 32%, 15% 60%,
+  83% 60%, 18% 70%, 25% 70%, 41% 70%, 50% 70%, 64% 70%, 80% 71%;
+  animation: bubbles ease-in-out .75s forwards;
+}
+
+.button:active {
+  transform: scale(0.95);
+  background-color: #0d1715;
+  box-shadow: 0 2px 25px rgba(233, 30, 99, 0.5);
+}
+.button:active::before {
+  animation: none;
+  background-size: 0;
+}
+  .btn {
+  display: inline-block;
+  padding: 1em 2em;
+  background-color: #4b4b4b;
+  /* background-color: transparent; */
+  color: #706c6c;
+  border-radius: 4px;
+  border: none;
+    width: 65px;
+  height: 40px;
+  position: relative;
+  box-shadow: 0 2px 25px rgba(13, 23, 21, 0.68);
+  outline: 0;
+  transition: transform ease-in 0.1s, background-color ease-in 0.1s,  box-shadow ease-in 0.25s;
+}
+.btn {
+  color: #fdfdfd; /* 设置新的文字颜色 */
+  font-size: 11px; /* 设置新的文字大小 */
+  font-weight: bold; /* 设置新的文字粗细 */
+  text-align: center;
+  font-family: "宋体", SimSun, sans-serif;
+  /* 添加其他文字属性，如字体系列、文本装饰等 */
+}
+.btn::before{
+  position: absolute;
+  content: '';
+  left: -2em;
+  right: -2em;
+  top: -2em;
+  bottom: -2em;
+  pointer-events: none;
+  transition: ease-in-out .5s;
+  background-repeat: no-repeat;
+  background-image: radial-gradient(circle, #0d1715 20%, transparent 20%),
+  radial-gradient(circle, #0d1715 20%, transparent 20%),
+  radial-gradient(circle, #4b4b4b 20%, transparent 20%),
+  radial-gradient(circle, rgb(13, 23, 21) 20%, transparent 20%),
+  radial-gradient(circle, #4b4b4b 20%, transparent 20%),
+  radial-gradient(circle, #ff0081 20%, transparent 20%),
+  radial-gradient(circle, #ff0081 20%, transparent 20%),
+  radial-gradient(circle, #0d1715 20%, transparent 20%),
+  radial-gradient(circle, #ff0081 20%, transparent 20%),
+  /*  */
+  radial-gradient(circle, #ff0081 20%, transparent 20%),
+  radial-gradient(circle, #0d1715 20%, transparent 20%),
+  radial-gradient(circle, #ff0081 20%, transparent 20%),
+  radial-gradient(circle, #4b4b4b 20%, transparent 20%),
+  radial-gradient(circle, #ff0081 20%, transparent 20%),
+  radial-gradient(circle, #0d1715 20%, transparent 20%),
+  radial-gradient(circle, #ff0081 20%, transparent 20%);
+  background-size: 10% 10%, 20% 20%, 15% 15%, 20% 20%, 18% 18%, 10% 10%, 15% 15%, 10% 10%, 18% 18%,
+  15% 15%, 20% 20%, 18% 18%, 20% 20%, 15% 15%, 10% 10%, 20% 20%;
+  background-position: 18% 40%, 20% 31%, 30% 30%, 40% 30%, 50% 30%, 57% 30%, 65% 30%, 80% 32%, 15% 60%,
+  83% 60%, 18% 70%, 25% 70%, 41% 70%, 50% 70%, 64% 70%, 80% 71%;
+  animation: bubbles ease-in-out .75s forwards;
+}
+
+.btn:active {
+  transform: scale(0.95);
+  background-color: #0d1715;
+  box-shadow: 0 2px 25px rgba(233, 30, 99, 0.5);
+}
+.btn:active::before {
+  animation: none;
+  background-size: 0;
+}
+  @keyframes bubbles {
+  0% {
+    background-position: 18% 40%, 20% 31%, 30% 30%, 40% 30%, 50% 30%, 57% 30%, 65% 30%, 80% 32%, 15% 60%,
+  83% 60%, 18% 70%, 25% 70%, 41% 70%, 50% 70%, 64% 70%, 80% 71%;
+  }
+  50% {
+    background-position: 10% 44%, 0% 20%, 15% 5%, 30% 0%, 42% 0%, 62% -2%, 75% 0%, 95% -2%, 0% 80%,
+  95% 55%, 7% 100%, 24% 100%, 41% 100%, 55% 95%, 68% 96%, 95% 100%;
+  }
+  100% {
+    background-position: 5% 44%, -5% 20%, 7% 5%, 23% 0%, 37% 0, 58% -2%, 80% 0%, 100% -2%, -5% 80%,
+  100% 55%, 2% 100%, 23% 100%, 42% 100%, 60% 95%, 70% 96%, 100% 100%;
+    background-size: 0% 0%;
+  }
+}
+
+.delete-file {
+  background: #4b4b4b;
+  border-radius: 4px;
+  color: white;
+  cursor: pointer;
+  border: none; /* 去除按钮边框 */
+  width: 150px;
+  height: 32px;
+  font-weight: bold; /* 设置新的文字粗细 */
+  font-family: "宋体", SimSun, sans-serif; /* 指定字体形状，这里使用 Arial 字体，如果用户设备没有 Arial 字体，则使用默认的 sans-serif 字体 */
+  font-size: 12px; /* 设置字体大小为 16 像素 */
+
+}
+
+/*删除按钮*/
+.delete-file {
+    /* 设置背景图像 */
+    background-image: url('../images/delete-file.png');
+    /* 设置背景大小为 cover 或 contain，以适应元素大小 */
+    background-size: cover; /* 或者使用 contain */
+    /* 设置背景重复方式 */
+    background-repeat: no-repeat;
+    /* 可选：设置背景位置 */
+    background-position: center bottom;
+    /* 设置元素宽度和高度 */
+    width: 20px; /* 根据需要调整宽度 */
+    height: 20px; /* 根据需要调整高度 */
+    /* 可选：设置其他样式，例如边框、圆角等 */
+    border-radius: 50%; /* 将元素形状设置为圆形 */
+    /* 可选：设置鼠标悬停效果 */
+    cursor: pointer;
+}
+
+/* 鼠标悬停时改变背景颜色等效果 */
+.delete-file:hover {
+    /* 设置背景颜色或其他效果 */
+    background-color: rgba(0, 0, 0, 0.1); /* 例如半透明效果 */
+}
+
+#mydiv {
+  position: absolute;
+  z-index: 2;
+  background-color: #ffffff;
+  border: 1px solid #ffffff;
+  text-align: center;
+    bottom: 12%;
+  left: 58%;
+  width: 400px; height: 40px;
+}
+.button-row {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    margin-top: 10px;
+    padding: 5px;
+}
+
+.button-row button {
+    padding: 5px 10px;
+}
+
+.config{
+    padding: 6px 25px;
+  background: #4b4b4b;
+  border-radius: 4px;
+  color: #fdfdfd;
+  text-align: center;
+  box-shadow: 0 2px 25px rgba(13, 23, 21, 0.68);
+  cursor: pointer;
+  width: 150px;
+  height: 32px;
+    font-family: "宋体", SimSun, sans-serif; /* 指定字体形状，这里使用 Arial 字体，如果用户设备没有 Arial 字体，则使用默认的 sans-serif 字体 */
+  font-size: 11px; /* 设置字体大小为 16 像素 */
+  font-weight: bold;
+}
+.feedback {
+  position: fixed;
+  top: 5%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.border {
+  border: 1px solid #000;
+  padding: 10px;
+  border-radius: 10px; /* 设置圆角 */
+  background-color: #969494; /* 设置填充为灰色 */
+  box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.2); /* 设置阴影 */
+}
+

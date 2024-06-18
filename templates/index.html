@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" type="images/x-icon" href="../static/images/favicon.ico">
+    <link rel="stylesheet" href="../static/css/bootstrap.min.css">
+    <link rel="stylesheet" href="../static/font-awesome/css/font-awesome.min.css">
+    <link rel="stylesheet" href="../static/css/github-dark-dimmed.min.css">
+    <link rel="stylesheet" href="../static/css/style.css">
+    <title>NLP-Compressed</title>
+</head>
+<body>
+<div id="mydiv">
+  <!-- 包含一个与可拖动 DIV 同名的标题 DIV，后跟 "header" -->
+  <div id="mydivheader"></div>
+
+  <div class="button-row">
+
+    <div class="left">
+      <div class="settings common dropup">
+        <a class="dropdown-toggle text-button" id="dropdownMenu" data-toggle="dropdown" aria-haspopup="true"
+           aria-expanded="false" title="设置">
+          <div id="config" class="config">
+            功能选择
+          </div>
+          <!--                    <i class="fa fa-cogs fa-lg" aria-hidden="true"></i>-->
+        </a>
+        <div class="dropdown-menu" style="padding:0;" onclick="event.stopPropagation()">
+          <div class="settings-common">
+            <span><i class="fa fa fa-linode fa-lg" aria-hidden="true"></i>主题颜色</span>
+            <select class="form-control ipt-common theme">
+              <option value="light">light</option>
+              <option value="gray">gray</option>
+              <option value="light-red">light-red</option>
+              <option value="light-blue">light-blue</option>
+              <option value="light-purple">light-purple</option>
+              <option value="light-green">light-green</option>
+              <option value="light-yellow">light-yellow</option>
+            </select>
+          </div>
+          <div class="settings-common">
+            <span><i class="fa fa-reddit-alien fa-lg" aria-hidden="true"></i>功能选择</span>
+            <select id="modelSelect" class="form-control ipt-common">
+              <option value="model1">分词</option>
+              <option value="model2">命名实体识别</option>
+              <option value="model3">文本分类</option>
+              <option value="model4">文本聚类</option>
+              <option value="model5">功能5</option>
+            </select>
+          </div>
+          <!-- 新的额外功能选择器 -->
+          <div class="settings-common" id="extraFunctionContainer" style="display: none;">
+            <span><i class="fa fa-reddit-alien fa-lg" aria-hidden="true"></i>选择模型</span>
+            <select id="extraFunctionSelect" name="extra_function" class="form-control ipt-common">
+              <option value="function1">Kmeans</option>
+              <option value="function2">Birch</option>
+              <option value="function3">Dbscan</option>
+            </select>
+          </div>
+        </div>
+      </div>
+
+      <!--                <div>-->
+      <!--                    <input type="file" id="file-uploader">-->
+      <!--                </div>-->
+      <!--                <div>-->
+      <!--                    <button id="file_button" class="delete-file"></button>-->
+      <!--                </div>-->
+
+
+    </div>
+    &nbsp;&nbsp;&nbsp;
+    <div class="button">
+      <label class="input-file-button" for="file-uploader"> 上传文件 </label>
+      <input type="file" id="file-uploader"/>
+    </div>
+    &nbsp;&nbsp;&nbsp;
+    <div class="button-row">
+      <button class="delete-file"></button>
+
+    </div>
+  </div>
+
+
+  <div class="feedback">
+    <div id="feedback"></div>
+  </div>
+</div>
+
+<div class="container">
+    <div class="row">
+      <div class="box col-md-12 custom-box">
+        <div class="title">
+            <h2 class="text-center"><span style="margin-right: 10px;"><i class="fa fa-optin-monster fa-lg" aria-hidden="true"></i></span>NLP</h2>
+        </div>
+        <div class="answer">
+          <div class="tips">
+          </div>
+          <div id="chatWindow"></div>
+          <div class="function">
+            <div class="others">
+
+              <div class="right">
+                <div class="screenshot common">
+                  <a class="icon-style" title="截图保存对话"><i class="fa fa-file-image-o fa-lg" aria-hidden="true"></i></a>
+                </div>
+                <div class="delete common">
+                  <a class="icon-style" title="删除历史记录"><i class="fa fa-trash-o fa-lg" aria-hidden="true"></i></a>
+                </div>
+              </div>
+            </div>
+            <div class="ipt">
+              <div class="col-xs-12">
+                <textarea id="chatInput" class="form-control" rows="1"></textarea>
+              </div>
+              <button id="chatBtn" class="btn btn-primary" type="button">Go !</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</body>
+<script src="../static/js/jquery-2.1.1.js"></script>
+<script src="../static/js/bootstrap.min.js"></script>
+<script src="../static/js/highlight.min.js"></script>
+<script src="../static/js/marked.min.js"></script>
+<script src="../static/js/html2canvas.min.js"></script>
+<script src="../static/js/config.js"></script>
+<script src="../static/js/custom.js"></script>
+<!--<script src="../static/js/left-element.js"></script>-->
+<script src="../static/js/process.js"></script>
+<script src="../static/js/background_color.js"></script>
+<script src="../static/js/delete.js"></script>
+<script src="../static/js/tuodong.js"></script>
+</html>
